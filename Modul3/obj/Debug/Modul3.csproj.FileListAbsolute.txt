@@ -1,0 +1,8 @@
+D:\repos\Modul3\Modul3\bin\Debug\Modul3.exe.config
+D:\repos\Modul3\Modul3\bin\Debug\Modul3.exe
+D:\repos\Modul3\Modul3\bin\Debug\Modul3.pdb
+D:\repos\Modul3\Modul3\obj\Debug\Modul3.csproj.AssemblyReference.cache
+D:\repos\Modul3\Modul3\obj\Debug\Modul3.csproj.SuggestedBindingRedirects.cache
+D:\repos\Modul3\Modul3\obj\Debug\Modul3.csproj.CoreCompileInputs.cache
+D:\repos\Modul3\Modul3\obj\Debug\Modul3.exe
+D:\repos\Modul3\Modul3\obj\Debug\Modul3.pdb
