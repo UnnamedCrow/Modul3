@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Modul3
@@ -19,32 +20,34 @@ namespace Modul3
             Sunday
             
         }
-        enum Semphore : int
-        {
-            Red = 100,
-            Yellow = 200,
-            Green = 300
-        }
         static void Main(string[] args)
         {
+
             // Ввод имени
             Console.Write("Enter your name: ");
-            string Name = Console.ReadLine();
+            var Name = Console.ReadLine();
             
             // Ввод возраста
             Console.Write("Enter your age: ");
-            int Age = int.Parse(Console.ReadLine());
+            var  Age = checked((byte) int.Parse(Console.ReadLine()));
+
+            // Ввод даты рождения
+            Console.Write("Enter your birthdate: ");
+            var Birthdate = Console.ReadLine();
+
+            // Ввод любимого дня недели
+            Console.Write("Enter your favorite day of the week: ");
+            var FavoriteDay = (DayOfWeek)byte.Parse(Console.ReadLine());
+
+            // Ввод любимого цвета
+            Console.Write("Enter your favorite color: ");
+            var FavoriteColor = Console.ReadLine();
 
             // Вывод полученых данных
-            Console.WriteLine($"Your name is {Name}, and your age is {Age}");
-            
-            // Ввод номера дня недели
-            Console.Write("Enter your favorite day of the week: ");
-            DayOfWeek FavoriteDay = (DayOfWeek) byte.Parse(Console.ReadLine());
-            
-            // Вывод дня недели       
-            Console.WriteLine($"Your favorite day of the week is: {FavoriteDay}");
-            
+            Console.WriteLine("Your name is {0}, and your age is {1}", Name, Age);
+            Console.WriteLine($"Your favorite day of the week is {FavoriteDay}, and your favorite color is {FavoriteColor}");
+            Console.WriteLine("Your birthdate is " + Birthdate);      
+
             // Ожидание ввода
             Console.ReadKey();
 
