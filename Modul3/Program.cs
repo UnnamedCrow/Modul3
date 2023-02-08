@@ -27,16 +27,25 @@ namespace Modul3
         }
         static void Main(string[] args)
         {
-            String MyName = "Max";
-            byte MyAge = 31;
-            bool MyPet = true;
-            double MyShoeSize = 40.5;
-            Console.WriteLine("My name is {0}",MyName);
-            Console.WriteLine("My age is {0}", MyAge);
-            Console.WriteLine("Do I have a pet? {0}", MyPet);
-            Console.WriteLine("My shoe size is {0}", MyShoeSize);
-            Console.WriteLine(DayOfWeek.Friday);
-            Console.WriteLine(Semphore.Green);
+            // Ввод имени
+            Console.Write("Enter your name: ");
+            string Name = Console.ReadLine();
+            
+            // Ввод возраста
+            Console.Write("Enter your age: ");
+            int Age = int.Parse(Console.ReadLine());
+
+            // Вывод полученых данных
+            Console.WriteLine($"Your name is {Name}, and your age is {Age}");
+            
+            // Ввод номера дня недели
+            Console.Write("Enter your favorite day of the week: ");
+            DayOfWeek FavoriteDay = (DayOfWeek) byte.Parse(Console.ReadLine());
+            
+            // Вывод дня недели       
+            Console.WriteLine($"Your favorite day of the week is: {FavoriteDay}");
+            
+            // Ожидание ввода
             Console.ReadKey();
 
         }
