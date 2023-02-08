@@ -8,6 +8,23 @@ namespace Modul3
 {
     internal class Program
     {
+        enum DayOfWeek : byte
+        {
+            Monday = 1,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,  
+            Sunday
+            
+        }
+        enum Semphore : int
+        {
+            Red = 100,
+            Yellow = 200,
+            Green = 300
+        }
         static void Main(string[] args)
         {
             String MyName = "Max";
@@ -18,7 +35,10 @@ namespace Modul3
             Console.WriteLine("My age is {0}", MyAge);
             Console.WriteLine("Do I have a pet? {0}", MyPet);
             Console.WriteLine("My shoe size is {0}", MyShoeSize);
+            Console.WriteLine(DayOfWeek.Friday);
+            Console.WriteLine(Semphore.Green);
             Console.ReadKey();
+
         }
     }
 }
