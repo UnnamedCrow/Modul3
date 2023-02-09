@@ -23,6 +23,8 @@ namespace Modul3
         static void Main(string[] args)
         {
 
+            DayOfWeek firstDayOfWeek = DayOfWeek.Monday;
+            Console.Write(firstDayOfWeek);
             // Ввод имени
             Console.Write("Enter your name: ");
             var Name = Console.ReadLine();
@@ -37,7 +39,7 @@ namespace Modul3
 
             // Ввод любимого дня недели
             Console.Write("Enter your favorite day of the week: ");
-            var FavoriteDay = (DayOfWeek)byte.Parse(Console.ReadLine());
+            var FavoriteDay = (DayOfWeek) byte.Parse(Console.ReadLine());
 
             // Ввод любимого цвета
             Console.Write("Enter your favorite color: ");
