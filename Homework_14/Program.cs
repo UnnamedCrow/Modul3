@@ -17,8 +17,8 @@
             int Page;
             IEnumerable<Contact> list = null;
             var SortedPhoneBook = phoneBook
-                              .OrderBy(E => E.Name)
-                              .ThenBy(E => E.LastName);
+                              .OrderBy(E => E.Name)       /// Sorting by Name 
+                              .ThenBy(E => E.LastName);   /// Sorting by LastName
             while (true)
             {
                 Console.WriteLine("Choose the page 1 - 3");
@@ -26,18 +26,20 @@
                 Console.Clear();
                 switch (Page)
                 {
-                    case 1:
+                    case 1:   /// First page
                         list = SortedPhoneBook.Take(2);
                         break;
-                    case 2:
+                    case 2:  /// Second page
                         list = SortedPhoneBook.Skip(2).Take(2);
                         break;
-                    case 3:
+                    case 3:  /// Third page
                         list = SortedPhoneBook.Skip(4).Take(2);
                         break;
                     default: break;
                 }
                 if (list == null) continue;
+
+                /// Outpup choosen page in console
                 foreach (var l in list)
                     Console.WriteLine($"{l.Name} {l.LastName} Phone number: {l.PhoneNumber} e-mail: {l.Email}");
                 list = null;
