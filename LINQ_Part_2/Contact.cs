@@ -13,12 +13,13 @@ namespace LINQ_Part_2
     {
         public string Name { get; set; }
         public long Phone { get; set; }
-
+        public string Email { get; set; } 
         public Contact() { }
-        public Contact(string name, long phone)
+        public Contact(string name, long phone, string email)
         {
             Name = name;
             Phone = phone;
+            Email = email;
         }
     }
 }

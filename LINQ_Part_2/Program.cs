@@ -88,26 +88,59 @@ namespace LINQ_Part_2
 
             ///15.2.8
             ///
-            var Numbers = new List<double>();
-            double Number;
-            while (true)
+            //var Numbers = new List<double>();
+            //double Number;
+            //while (true)
+            //{
+            //    Console.Clear();
+            //    Console.WriteLine("Enter number");
+            //    if(!double.TryParse(Console.ReadLine(), out Number))
+            //    {
+            //        Console.WriteLine("Ooops! Wrong data! Try again!");
+            //        continue;
+            //    }
+            //    Numbers.Add(Number);
+            //    Console.WriteLine($"Count of numbers in the list: {Numbers.Count}");
+            //    Console.WriteLine($"Sun of numbers in the list: {Numbers.Sum()}");
+            //    Console.WriteLine($"Max number: {Numbers.Max()}");
+            //    Console.WriteLine($"Min number: {Numbers.Min()}");
+            //    Console.WriteLine($"Average number: {Numbers.Average()}");
+            //    Console.ReadLine();
+            //}
+
+            /// 15.3.3
+            /// 
+            var phoneBook = new List<Contact>();
+
+            // добавляем контакты
+            phoneBook.Add(new Contact("Игорь", 79990000001, "igor@example.com"));
+            phoneBook.Add(new Contact("Сергей", 79990000010, "serge@example.com"));
+            phoneBook.Add(new Contact("Анатолий", 79990000011, "anatoly@example.com"));
+            phoneBook.Add(new Contact("Валерий", 79990000012, "valera@example.com"));
+            phoneBook.Add(new Contact("Сергей", 799900000013, "serg@gmail.com"));
+            phoneBook.Add(new Contact("Иннокентий", 799900000013, "innokentii@example.com"));
+
+            var GroupUsers = phoneBook.GroupBy(x => x.Email.Split('@').Last());
+            foreach (var groupUser in GroupUsers)
             {
-                Console.Clear();
-                Console.WriteLine("Enter number");
-                if(!double.TryParse(Console.ReadLine(), out Number))
+                if(groupUser.Key.Contains("example"))
                 {
-                    Console.WriteLine("Ooops! Wrong data! Try again!");
-                    continue;
+                    Console.WriteLine("Fake addres: ");
+                    foreach(var contact in groupUser) 
+                    {
+                        Console.WriteLine(contact.Name + " " + contact.Phone);
+                    }
                 }
-                Numbers.Add(Number);
-                Console.WriteLine($"Count of numbers in the list: {Numbers.Count}");
-                Console.WriteLine($"Sun of numbers in the list: {Numbers.Sum()}");
-                Console.WriteLine($"Max number: {Numbers.Max()}");
-                Console.WriteLine($"Min number: {Numbers.Min()}");
-                Console.WriteLine($"Average number: {Numbers.Average()}");
-                Console.ReadLine();
+                else
+                {
+                    Console.WriteLine("Real Addres: ");
+                    foreach(var contact in groupUser)
+                    {
+                        Console.WriteLine(contact.Name + " " + contact.Phone);
+                    }
+                }
             }
-           
+            Console.ReadLine();
         }
         static long Factorial(int n)
         {
