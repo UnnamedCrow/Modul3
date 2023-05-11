@@ -110,35 +110,141 @@ namespace LINQ_Part_2
 
             /// 15.3.3
             /// 
-            var phoneBook = new List<Contact>();
+            //var phoneBook = new List<Contact>();
 
-            // добавляем контакты
-            phoneBook.Add(new Contact("Игорь", 79990000001, "igor@example.com"));
-            phoneBook.Add(new Contact("Сергей", 79990000010, "serge@example.com"));
-            phoneBook.Add(new Contact("Анатолий", 79990000011, "anatoly@example.com"));
-            phoneBook.Add(new Contact("Валерий", 79990000012, "valera@example.com"));
-            phoneBook.Add(new Contact("Сергей", 799900000013, "serg@gmail.com"));
-            phoneBook.Add(new Contact("Иннокентий", 799900000013, "innokentii@example.com"));
+            //// добавляем контакты
+            //phoneBook.Add(new Contact("Игорь", 79990000001, "igor@example.com"));
+            //phoneBook.Add(new Contact("Сергей", 79990000010, "serge@example.com"));
+            //phoneBook.Add(new Contact("Анатолий", 79990000011, "anatoly@example.com"));
+            //phoneBook.Add(new Contact("Валерий", 79990000012, "valera@example.com"));
+            //phoneBook.Add(new Contact("Сергей", 799900000013, "serg@gmail.com"));
+            //phoneBook.Add(new Contact("Иннокентий", 799900000013, "innokentii@example.com"));
 
-            var GroupUsers = phoneBook.GroupBy(x => x.Email.Split('@').Last());
-            foreach (var groupUser in GroupUsers)
+            //var GroupUsers = phoneBook.GroupBy(x => x.Email.Split('@').Last());
+            //foreach (var groupUser in GroupUsers)
+            //{
+            //    if(groupUser.Key.Contains("example"))
+            //    {
+            //        Console.WriteLine("Fake addres: ");
+            //        foreach(var contact in groupUser) 
+            //        {
+            //            Console.WriteLine(contact.Name + " " + contact.Phone);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Real Addres: ");
+            //        foreach(var contact in groupUser)
+            //        {
+            //            Console.WriteLine(contact.Name + " " + contact.Phone);
+            //        }
+            //    }
+            //}
+
+            /// 15.4.1
+            /// 
+            // Список моделей
+            var cars = new List<Car>()
             {
-                if(groupUser.Key.Contains("example"))
+                  new Car() { Model  = "SX4", Manufacturer = "Suzuki"},
+                  new Car() { Model  = "Grand Vitara", Manufacturer = "Suzuki"},
+                  new Car() { Model  = "Jimny", Manufacturer = "Suzuki"},
+                  new Car() { Model  = "Land Cruiser Prado", Manufacturer = "Toyota"},
+                  new Car() { Model  = "Camry", Manufacturer = "Toyota"},
+                  new Car() { Model  = "Polo", Manufacturer = "Volkswagen"},
+                  new Car() { Model  = "Passat", Manufacturer = "Volkswagen"},
+            };
+
+            // Список автопроизводителей
+            var manufacturers = new List<Manufacturer>()
+            {
+                new Manufacturer() { Country = "Japan", Name = "Suzuki" },
+                new Manufacturer() { Country = "Japan", Name = "Toyota" },
+                new Manufacturer() { Country = "Germany", Name = "Volkswagen" },
+            };
+
+            var result = from car in cars
+                         join manufacturer in manufacturers on car.Manufacturer equals manufacturer.Name
+                         select new
+                         {
+                             Name = car.Model,
+                             Manufacturer = manufacturer.Name,
+                             Country = manufacturer.Country,
+                         };
+            var result1 = cars.Join(manufacturers,
+                car => car.Manufacturer,
+                m => m.Name,
+                (car, m) =>
+                new
                 {
-                    Console.WriteLine("Fake addres: ");
-                    foreach(var contact in groupUser) 
-                    {
-                        Console.WriteLine(contact.Name + " " + contact.Phone);
-                    }
+                    Name = car.Model,
+                    Manufacturer = m.Name,
+                    Country = m.Country
+                }
+                );
+            foreach (var item in result1)
+                Console.WriteLine($"{item.Name} - {item.Manufacturer} ({item.Country})");
+            var groups = result.GroupBy(x => x.Country);
+            foreach (var group in groups)
+            {
+                if (group.Key == "Germany")
+                {
+                    Console.WriteLine($"Germany ({group.Count()}):");
+                    foreach (var car in group)
+                        Console.WriteLine($"{car.Name} - {car.Manufacturer}");
                 }
                 else
                 {
-                    Console.WriteLine("Real Addres: ");
-                    foreach(var contact in groupUser)
-                    {
-                        Console.WriteLine(contact.Name + " " + contact.Phone);
-                    }
+                    Console.WriteLine($"Japan ({group.Count()}): ");
+                    foreach (var car in group)
+                        Console.WriteLine($"{car.Name} - {car.Manufacturer}");
                 }
+            }
+
+            var departments = new List<Department>()
+            {
+                 new Department() {Id = 1, Name = "Программирование"},
+                 new Department() {Id = 2, Name = "Продажи"}
+            };
+
+            var employees = new List<Employee>()
+            {
+                new Employee() { DepartmentId = 1, Name = "Инна", Id = 1},
+                new Employee() { DepartmentId = 1, Name = "Андрей", Id = 2},
+                new Employee() { DepartmentId = 2, Name = "Виктор ", Id = 3},
+                new Employee() { DepartmentId = 3, Name = "Альберт ", Id = 4},
+            };
+
+            var joindep = from emp in employees
+                          join dep in departments on emp.DepartmentId equals dep.Id
+                          select new
+                          {
+                              Dep = dep.Name,
+                              Name = emp.Name
+                          };
+
+            var grJoin = employees.GroupJoin(departments,
+                                            emp => emp.DepartmentId,
+                                            dep => dep.Id,
+                                            (emp,dep) => new
+                                            {
+                                                Name = emp.Name,
+                                                DepName = dep.Select(x => x.Name)
+                                            }
+                                            );
+
+            foreach (var item in joindep)
+                Console.WriteLine($"{item.Name} - {item.Dep} ");
+
+            foreach (var dep in grJoin)
+            {
+                Console.WriteLine(dep.Name + ":");
+
+                // Выводим сотрудников
+                foreach (var emp in dep.Name)
+                    Console.WriteLine(emp);
+
+                Console.WriteLine();
             }
             Console.ReadLine();
         }

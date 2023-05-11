@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework13.6.2", "Homework1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework_14", "Homework_14\Homework_14.csproj", "{2CC2D26E-79CF-462E-ADB8-D79690732F3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_Part_2", "LINQ_Part_2\LINQ_Part_2.csproj", "{5FB61D98-DD83-46C1-A35E-2F9CA438BDB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ_Part_2", "LINQ_Part_2\LINQ_Part_2.csproj", "{5FB61D98-DD83-46C1-A35E-2F9CA438BDB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_15_Homework", "Unit_15_Homework\Unit_15_Homework.csproj", "{DDD0AAC9-B0DF-44E1-8710-1EEC955A7AF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5FB61D98-DD83-46C1-A35E-2F9CA438BDB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FB61D98-DD83-46C1-A35E-2F9CA438BDB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB61D98-DD83-46C1-A35E-2F9CA438BDB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD0AAC9-B0DF-44E1-8710-1EEC955A7AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD0AAC9-B0DF-44E1-8710-1EEC955A7AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD0AAC9-B0DF-44E1-8710-1EEC955A7AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD0AAC9-B0DF-44E1-8710-1EEC955A7AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
